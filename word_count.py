@@ -22,7 +22,7 @@ def wordcount(filepath, word_dic, num_of_words, k):
 
 
 word_dic = {}
-filepath ='book.txt'
+filepath = 'data/book.txt'
 num_of_words = 0
 k = 10
 
