@@ -1,5 +1,10 @@
+# Takes in a .CSV or .txt file and creates a hash table
+# with a key:value structure of:
+# string name : number of occurrences.
 import re
 import time
+
+
 def wordcount(filepath, word_dic, num_of_words, k):
         start = time.time()
         lines = 0
@@ -26,6 +31,7 @@ filepath = 'data/book.txt'
 num_of_words = 0
 k = 10
 
-if __name__ =="__main__":
+
+if __name__ == "__main__":
     words_processed, time_taken , lines = wordcount(filepath,word_dic, num_of_words, k)
     print("{} Words Processed from {} lines in {} seconds.".format(words_processed,lines,  time_taken) )
