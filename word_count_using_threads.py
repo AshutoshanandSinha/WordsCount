@@ -12,8 +12,6 @@ class topkwords():
     def __init__(self, path, k):
         self.path = path
         self.k = k
-        self.res = []
-        self.proc_words_dic = []
         self.word_dic = {}
         self.process_text()
 
