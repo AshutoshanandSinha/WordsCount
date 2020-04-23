@@ -1,11 +1,9 @@
 # Main wrapper function for the other functions.
-import word_count
-import max_heap
+from max_heap import MaxHeap
 
 
 def main():
-	print("Starting up.")
-
+	pass
 
 # Driver code.
 if __name__ == "__main__":
