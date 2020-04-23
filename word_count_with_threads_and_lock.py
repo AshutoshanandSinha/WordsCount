@@ -39,6 +39,7 @@ class topkwords():
         except Exception as e:
             print('Exception ' + str(e))
 
+    #function extracts words from line and store its count in the dictionary
     def word_counting(self, line):
             for word in re.findall(r'\w+', line):
                 self.lock.acquire()

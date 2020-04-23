@@ -22,9 +22,9 @@ class topkwords():
             with open(self.path, 'r') as f:
                 print("Processing text file ...")
                 while True:
-                    data = list(islice(f, 1000))  # slicing into the chunks of size 10k lines
+                    data = list(islice(f, 10000))  # slicing into the chunks of size 10k lines
                     if not data: break
-                    pool = ThreadPool(4)
+                    pool = ThreadPool(10)
                     pool.map(self.word_counting, data)
                     pool.close()
                     pool.join()
@@ -37,6 +37,7 @@ class topkwords():
         except Exception as e:
             print('Exception ' + str(e))
 
+    #function extracts words from line and store its count in the dictionary
     def word_counting(self, line):
             for word in re.findall(r'\w+', line):
                 self.word_dic[word] = self.word_dic.get(word, 0) + 1
