@@ -3,9 +3,10 @@
 
 # importing libraries
 import re
-from itertools import islice
 from max_heap import max_heap
-from multiprocessing.dummy import Pool
+import collections
+import string
+
 
 class topkwords():
     # initialization
@@ -13,26 +14,26 @@ class topkwords():
         self.path = path
         self.k = k
         self.res = []
-        self.word_dic = {}
+        self.word_dic = collections.Counter()
         self.process_text()
 
     # Function will process the text file and will store the word count in dictionary
     def process_text(self):
         # if valid path then enter into try statement
         try:
-            with open(self.path, 'r') as f:
-                print("Processing text file ...")
+            def read_chunks(file, chunk_size=1024*2048):
                 while True:
-                    data = list(islice(f, 10000))  # slicing into the chunks of size 10k lines
-                    if not data: break
-                    pool = Pool()
-                    pool.map(self.word_counting, data)
-                    pool.close()
-                    pool.join()
+                    data = file.read(chunk_size)
+                    if not data:break
+                    yield data
+            with open(self.path) as f:
+                print("Processing text file ...")
+                for chunk in read_chunks(f):
+                    self.word_dic.update(re.sub('[' + string.punctuation + ']', '', chunk).split())
             print("Processing of text file completed!")
 
             # calling max_heap to fetch top k words
-            self.res = max_heap(self.word_dic, self.k)
+            self.res = max_heap(self.word_dic,self.k)
             print("Total unique words processed: {}.".format(len(self.word_dic.keys())))
 
         except Exception as e:
@@ -40,5 +41,4 @@ class topkwords():
 
     #function extracts words from line and store its count in the dictionary
     def word_counting(self, line):
-            for word in re.findall(r'\w+', line):
-                self.word_dic[word] = self.word_dic.get(word, 0) + 1
+            self.word_dic.update(re.findall(r'\w+', line))
