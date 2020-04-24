@@ -8,7 +8,7 @@ import time
 def main():
 	start = time.time()
 	print("Starting up.")
-	k = 5
+	k = int(input("Enter a value for k:\n"))
 
 	# Parse file
 	data = WordCount('data/book.txt')
