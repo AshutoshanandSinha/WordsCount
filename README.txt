@@ -7,8 +7,7 @@ main.py
     - Main wrapper function for the other functions.
 
 max_heap.py
-    - Takes in a hash table and creates a max heap returning
-      the top k key value pairs with the highest values.
+    - MaxHeap class creates a max heap that takes in key:value pairs.
 
 word_count.py
     - Takes in a .CSV or .txt file and creates a hash table
