@@ -3,7 +3,7 @@
 
 # importing libraries
 import re
-from max_heap import max_heap
+from max_heap import MaxHeap
 import collections
 import string
 
@@ -33,17 +33,17 @@ class topkwords():
             print("Processing of text file completed!")
 
             # calling max_heap to fetch top k words
-            self.res = max_heap(self.word_dic,self.k)
+            heap = MaxHeap(self.k)
+            for (key, value) in self.word_dic.items():
+                pair = [key, value]
+                heap.insert_node(pair)
+
+            print("Top " + str(self.k) + " Repeating Words:")
+            for i in range(self.k-1):
+                self.res.append(heap.pop_max_node())
+
             print("Total unique words processed: {}.".format(len(self.word_dic.keys())))
+            return self.res
 
         except Exception as e:
             print('Exception ' + str(e))
-
-    #function extracts words from line and store its count in the dictionary
-    def word_counting(self, line):
-<<<<<<< HEAD
-            self.word_dic.update(re.findall(r'\w+', line))
-=======
-            for word in re.findall(r'\w+', line):
-                self.word_dic[word] = self.word_dic.get(word, 0) + 1
->>>>>>> 69904c48db2be0960184badc5206f378bce59960
