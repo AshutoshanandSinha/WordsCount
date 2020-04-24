@@ -1,16 +1,16 @@
-# Class to process on text file and return the top k frequent words
+# Class to process on text file and store them a dictionary.
 # WITHOUT ANY THREADING OR MULTIPROCESSING
 
-# importing libraries
 import re
 from max_heap import MaxHeap
 import collections
 import string
 
 
-class topkwords():
-    # initialization
-    def __init__(self, path, k):
+
+class WordCount:
+    # Initialization.
+    def __init__(self, path):
         self.path = path
         self.k = k
         self.res = []
