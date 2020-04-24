@@ -89,8 +89,8 @@ class MaxHeap:
 	def pop_top_k_words(self, int):
 		print("Top " + str(int) + " Repeating Words:")
 		for i in range(int):
-			max_node = self.pop_max_node
-			print(str(max_node))
+			max_node = self.pop_max_node()
+			print(max_node)
 
 	# Display contents of heap in order.
 	def display_heap(self):

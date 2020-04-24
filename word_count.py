@@ -17,7 +17,7 @@ class WordCount:
     def process_text(self):
         # if valid path then enter into try statement
         try:
-            with open(self.path, 'r') as f:
+            with open(self.path, 'r', encoding="utf8") as f:
                 print("Processing text file ...")
                 while True:
                     data = list(islice(f, 10000))  # slicing into the chunks of size 10k lines
