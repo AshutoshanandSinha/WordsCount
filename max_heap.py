@@ -1,5 +1,6 @@
 # MaxHeap class creates a max heap that takes in key:value pairs.
 
+
 class MaxHeap:
 	# Constructor.
 	def __init__(self):
@@ -68,6 +69,12 @@ class MaxHeap:
 				self.swap_nodes(node_index, self.get_parent_index(node_index))
 				node_index = self.get_parent_index(node_index)
 
+	# Insert dictionary into heap.
+	def insert_dict(self, word_dict):
+		for (key, value) in word_dict.items():
+			node = [key, value]
+			self.insert_node(node)
+
 	# Pop and return the maximum node from the heap.
 	def pop_max_node(self):
 		if self.size == 0:
@@ -78,6 +85,12 @@ class MaxHeap:
 			self.size -= 1
 			self.max_heapify_node(self.front)
 			return max_node
+
+	def pop_top_k_words(self, int):
+		print("Top " + str(int) + " Repeating Words:")
+		for i in range(int):
+			max_node = self.pop_max_node
+			print(str(max_node))
 
 	# Display contents of heap in order.
 	def display_heap(self):

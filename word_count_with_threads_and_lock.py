@@ -4,16 +4,15 @@
 # importing libraries
 import re
 from itertools import islice
-from max_heap import max_heap
 import multiprocessing
 from multiprocessing.dummy import Pool as ThreadPool
 
-class topkwords():
+
+class WordCount():
     # initialization
-    def __init__(self, path, k):
+    def __init__(self, path):
         self.path = path
-        self.k = k
-        self.word_dic = {}
+        self.word_dict = {}
         self.lock = multiprocessing.Lock()
         self.process_text()
 
@@ -33,15 +32,24 @@ class topkwords():
             print("Processing of text file completed!")
 
             # calling max_heap to fetch top k words
-            self.res = max_heap(self.word_dic, self.k)
-            print("Total unique words processed: {}.".format(len(self.word_dic.keys())))
+            self.res = max_heap(self.word_dict, self.k)
+            print("Total unique words processed: {}.".format(len(self.word_dict.keys())))
 
         except Exception as e:
             print('Exception ' + str(e))
 
-    #function extracts words from line and store its count in the dictionary
+    # Accessor for dictionary word_dict.
+    def get_word_dict(self):
+        return self.word_dict
+
+    # Function extracts words from line and store its count in the dictionary.
     def word_counting(self, line):
             for word in re.findall(r'\w+', line):
                 self.lock.acquire()
-                self.word_dic[word] = self.word_dic.get(word, 0) + 1
+                self.word_dict[word] = self.word_dict.get(word, 0) + 1
                 self.lock.release()
+
+
+# Driver code for testing class.
+if __name__ == "__main__":
+    pass

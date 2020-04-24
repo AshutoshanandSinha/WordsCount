@@ -1,19 +1,16 @@
-# Class to process on text file and return the top k frequent words
+# Class to process on text file and store them a dictionary.
 # WITHOUT ANY THREADING OR MULTIPROCESSING
 
-# importing libraries
 import re
 from itertools import islice
-from max_heap import max_heap
 from multiprocessing.dummy import Pool
 
-class topkwords():
-    # initialization
-    def __init__(self, path, k):
+
+class WordCount:
+    # Initialization.
+    def __init__(self, path):
         self.path = path
-        self.k = k
-        self.res = []
-        self.word_dic = {}
+        self.word_dict = {}
         self.process_text()
 
     # Function will process the text file and will store the word count in dictionary
@@ -24,21 +21,28 @@ class topkwords():
                 print("Processing text file ...")
                 while True:
                     data = list(islice(f, 10000))  # slicing into the chunks of size 10k lines
-                    if not data: break
+                    if not data:
+                        break
                     pool = Pool()
                     pool.map(self.word_counting, data)
                     pool.close()
                     pool.join()
             print("Processing of text file completed!")
-
-            # calling max_heap to fetch top k words
-            self.res = max_heap(self.word_dic, self.k)
-            print("Total unique words processed: {}.".format(len(self.word_dic.keys())))
+            print("Total unique words processed: {}.".format(len(self.word_dict.keys())))
 
         except Exception as e:
             print('Exception ' + str(e))
 
-    #function extracts words from line and store its count in the dictionary
+    # Function extracts words from line and store its count in the dictionary.
     def word_counting(self, line):
             for word in re.findall(r'\w+', line):
-                self.word_dic[word] = self.word_dic.get(word, 0) + 1
+                self.word_dict[word] = self.word_dict.get(word, 0) + 1
+
+    # Accessor for dictionary word_dict.
+    def get_word_dict(self):
+        return self.word_dict
+
+
+# Driver code for testing class.
+if __name__ == "__main__":
+    pass
