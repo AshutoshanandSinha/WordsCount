@@ -41,4 +41,9 @@ class topkwords():
 
     #function extracts words from line and store its count in the dictionary
     def word_counting(self, line):
+<<<<<<< HEAD
             self.word_dic.update(re.findall(r'\w+', line))
+=======
+            for word in re.findall(r'\w+', line):
+                self.word_dic[word] = self.word_dic.get(word, 0) + 1
+>>>>>>> 69904c48db2be0960184badc5206f378bce59960

@@ -7,13 +7,11 @@ main.py
     - Main wrapper function for the other functions.
 
 max_heap.py
-    - Takes in a hash table and creates a max heap returning
-      the top k key value pairs with the highest values.
+    - MaxHeap class creates a max heap that takes in key:value pairs.
 
 word_count.py
-    - Takes in a .CSV or .txt file and creates a hash table
-      with a key:value structure of:
-      string name : number of occurrences.
+    - Class to process on text file and return the top k frequent words
+    WITHOUT ANY THREADING OR MULTIPROCESSING
 
 .gitignore
     - .gitignore file for excluding anything from the repo.
@@ -26,4 +24,4 @@ data/book.txt
 
 data/.gitignore
     - .gitignore file primarily for larger data sets we
-      don't want pushed into the repo.
+     don't want pushed into the repo.
