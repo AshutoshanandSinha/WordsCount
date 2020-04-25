@@ -12,11 +12,12 @@ def main():
 
 	# Parse file
 	data = WordCount('data/book.txt')
+	data.sort_and_pop_word_dict(k)
 
 	# Insert into max heap.
-	heap = MaxHeap()
-	heap.insert_dict(data.get_word_dict())
-	heap.pop_top_k_words(k)
+	# heap = MaxHeap()
+	# heap.insert_dict(data.get_word_dict())
+	# heap.pop_top_k_words(k)
 
 	print(time.time()-start)
 

@@ -33,6 +33,12 @@ class WordCount:
         except Exception as e:
             print('Exception ' + str(e))
 
+    # Sorts dictionary word_dict and returns top k items.
+    def sort_and_pop_word_dict(self, k):
+        topKList = self.word_dict.most_common(k)
+        for i in topKList:
+            print(i)
+
     # Accessor for dictionary word_dict.
     def get_word_dict(self):
         return self.word_dict
