@@ -1,8 +1,6 @@
-# Class to process on text file and store them a dictionary.
-# WITHOUT ANY THREADING OR MULTIPROCESSING
+# Class to parse text file and store parsed data as a collection.
 
 import re
-from max_heap import MaxHeap
 import collections
 import string
 

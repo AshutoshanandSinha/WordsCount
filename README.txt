@@ -4,14 +4,18 @@ top K recurring unique words found in the file.
 The file structure is as follows:
 
 main.py
-    - Main wrapper function for the other functions.
+    - Main wrapper function for parsing and data structures.
+    Times the run time of the program.
 
 max_heap.py
-    - MaxHeap class creates a max heap that takes in key:value pairs.
+    - Class to create a max heap that stores dictionary items or other
+    key value pairs. Designed to be used with WordCountDict() class.
 
 word_count.py
-    - Class to process on text file and return the top k frequent words
-    WITHOUT ANY THREADING OR MULTIPROCESSING
+    - Class to parse text file and store parsed data as a collection.
+
+word_count_dict.py
+    - Class to parse text file and store parsed data as a dictionary.
 
 .gitignore
     - .gitignore file for excluding anything from the repo.
@@ -21,6 +25,8 @@ data/
 
 data/book.txt
     - sample .txt file for parsing data.
+
+data/
 
 data/.gitignore
     - .gitignore file primarily for larger data sets we

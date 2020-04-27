@@ -1,14 +1,13 @@
 # Class to process on text file and return the top k frequent words
 # USING THREADS
 
-# importing libraries
 import re
 from itertools import islice
 import multiprocessing
 from multiprocessing.dummy import Pool as ThreadPool
 
 
-class WordCount():
+class WordCount:
     # initialization
     def __init__(self, path):
         self.path = path

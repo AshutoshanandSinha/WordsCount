@@ -1,4 +1,5 @@
-# MaxHeap class creates a max heap that takes in key:value pairs.
+# Class to create a max heap that stores dictionary items or other
+# key value pairs. Designed to be used with WordCountDict() class.
 
 
 class MaxHeap:

@@ -1,17 +1,14 @@
-# Class to process on text file and store them a dictionary.
-# WITHOUT ANY THREADING OR MULTIPROCESSING
+# Class to parse text file and store parsed data as a dictionary.
 
 import re
 import string
-from max_heap import MaxHeap
 
 
-class WordCount:
+class WordCountDict:
     # Initialization.
-    def __init__(self, path, k):
+    def __init__(self, path):
         self.path = path
         self.word_dict = {}
-        self.k = k
         self.process_text()
 
     # Function will process the text file and will store the word count in dictionary
@@ -30,11 +27,6 @@ class WordCount:
                     for word in re.sub('[' + string.punctuation + ']', '', chunk).split():
                         self.word_dict[word] = self.word_dict.get(word, 0) + 1 #extracting word from each chunk and updating dictionary
             print("Processing of text file completed!")
-
-            # calling max_heap to fetch top k words
-            hp = MaxHeap()
-            hp.insert_dict(self.word_dict)
-            hp.pop_top_k_words(self.k)
         except Exception as e:
             print('Exception ' + str(e))
 
